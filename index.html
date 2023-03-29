@@ -7,39 +7,72 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body {
+            position: relative;
+            background-image: url('./tai_nguyen/AstonishingPinkBelugawhale-max-1mb.gif');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+
         p {
             font-weight: bold;
             font-size: 50px;
+            margin-left: 10px;
+        }
+
+        .content {
+            display: flex;
+            text-align: center;
+            justify-content: center;
+        }
+
+        .button {
+            text-align: center;
+        }
+
+        button {
+            width: 100px;
+            height: 50px;
+            border-radius: 15px;
         }
     </style>
 </head>
 
 <body>
-    Quá trình chinh phục <span>.</span>
-    <h3>0<span>%</span></h3>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <button onclick="plusSlides(1)">tiến </button>
-    <button onclick="plusSlides(-1)">lùi</button>
+    <h1>Con Đường Đến Trái Tim Nàng <span></span></h1>
+    <h2>0<span>%</span></h2>
+    <div class="content">
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+    </div>
+    <div class="button">
+        <button onclick="plusSlides(-1)">Lùi</button>
+        <button onclick="plusSlides(1)">Tiến </button>
+    </div>
 
 </body>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     let a = document.getElementsByTagName('p');
-    let diem = document.getElementsByTagName('h3');
+    let diem = document.getElementsByTagName('h2');
     let name = document.getElementsByTagName('span');
     let index = 0;
     let arrQuaTrinh = [
@@ -74,16 +107,27 @@
         },
     })
         .then((value) => {
-            swal({
-                title: "Bạn đã chắc chắn chưa",
-                icon: "info",
-                buttons: {
-                    cancel: true,
-                    confirm: true,
-                },
-            }).then(() => {
-                name[0].innerHTML = value;
-            });
+            if (value) {
+                swal({
+                    title: "Bạn đã chắc chắn chưa",
+                    icon: "info",
+                    buttons: true,
+                }).then((a) => {
+                    if (a == true) {
+                        name[0].innerHTML = value;
+                    } else {
+                        swal({
+                            title: "Chúc bạn sớm tìm được my destiny!",
+                            icon: "info",
+                        })
+                    }
+                });
+            } else {
+                swal({
+                    title: "Bạn cần phải nhập tên",
+                    icon: "error"
+                })
+            }
         });
     function plusSlides(n) {
         diChuyen(index += n);
