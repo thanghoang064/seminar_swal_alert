@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        p {
+            font-weight: bold;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    Quá trình chinh phục 
+    <h3>0<span>%</span></h3>
+    <p>-----</p>
+    <p>-----</p>
+    <p>-----</p>
+    <p>-----</p>
+    <p>-----</p>
+    <p>-----</p>
+    <p>-----</p>
+    <p>-----</p>
+    <p>-----</p>
+    <p>-----</p>
+    <p>-----</p>
+    <p>-----</p>
+    <p>-----</p>
+    <p>-----</p>
+    <p>-----</p>
+    <button onclick="plusSlides(1)">tiến </button>
+    <button onclick="plusSlides(-1)">lùi</button>
+   
+</body>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+
+
+    let a = document.getElementsByTagName('p');
+    let diem = document.getElementsByTagName('h3');
+    let index = 0;
+    let arrQuaTrinh = [
+        {
+            "key":1,
+            "value": "làm quen",
+        },
+        {
+            "key":2,
+            "value": "tán tỉnh",
+        }
+   ];
+    function plusSlides(n) {
+        diChuyen(index+=n);
+	}
+   
+   let dem = 0;
+    function diChuyen(n) {
+       let ran =  Math.floor(Math.random() * arrQuaTrinh.length);
+        //n > chiều dài của mẩn trở lại ban đầu
+		if (n > a.length) { // slides.length = 3 
+			index = 1;
+		}
+		if (n < 1) {
+			index  = a.length;
+		}
+        for(let i = 0;i<a.length;i++) { 
+            a[i].style.color = "black";
+        }   
+        a[index-1].style.color = "green"; 
+        switch(index) {
+            case 3:case 6:case 7:case 9:
+                a[index-1].innerHTML = arrQuaTrinh[ran].value;
+                swal(arrQuaTrinh[ran].value);
+                switch (arrQuaTrinh[ran].key)  {
+                    case 2 :
+                        diem[0].innerHTML = (dem+=15)+"%";
+                    break;
+                    case 1 : 
+                        diem[0].innerHTML = (dem-=10)+"%";
+                    break;
+                }
+            break;           
+        }
+        console.log(dem);
+        //bắt biến đếm
+
+    }
+</script>
+</html>
