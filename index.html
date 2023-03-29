@@ -44,9 +44,6 @@
 <body>
     <h1>Con Đường Đến Trái Tim Nàng <span></span></h1>
     <h2>0<span>%</span></h2>
-    <div class="btn">
-        <button onclick="nhapTen()">Nhập tên</button>
-    </div>
     <div class="content">
         <p>----</p>
         <p>----</p>
@@ -75,8 +72,6 @@
     let a = document.getElementsByTagName('p');
     let diem = document.getElementsByTagName('h2');
     let name = document.getElementsByTagName('span');
-    let button = document.getElementsByTagName('button');
-    button[0].style.display = 'none';
     let index = 0;
     let arrQuaTrinh = [
         {
@@ -100,43 +95,6 @@
             "value": "Hẹn hò",
         }
     ];
-    function nhapTen() {
-        swal({
-            title: "Người bạn muốn chinh phục là:",
-            content: {
-                element: "input",
-                attributes: {
-                    placeholder: "Nhập tên của cô ấy"
-                },
-            },
-        })
-            .then((value) => {
-                if (value) {
-                    swal({
-                        title: "Bạn đã chắc chắn chưa",
-                        icon: "info",
-                        buttons: true,
-                    }).then((a) => {
-                        if (a == true) {
-                            name[0].innerHTML = value;
-                            button[0].style.display = 'none';
-                        } else {
-                            swal({
-                                title: "Chúc bạn sớm tìm được my destiny!",
-                                icon: "info",
-                            })
-                        }
-                    });
-                } else {
-                    swal({
-                        title: "Bạn cần phải nhập tên",
-                        icon: "error"
-                    })
-                    button[0].style.display = 'block';
-                }
-            });
-    }
-    nhapTen();
     function plusSlides(n) {
         diChuyen(index += n);
     }
@@ -205,11 +163,13 @@
         }
         console.log(dem);
         //bắt biến đếm
-        if (dem < 0 && index > 2) {
+        if (dem < 0 && index > 2 ) {
             swal({
                 title: "Bạn đã thất bại",
                 text: "Bạn có muốn chinh phục lại cô ấy ko",
                 icon: "error",
+            }).then((value) => {
+                location.reload();
             });
             diem[0].innerHTML = 0;
             dem = 0;
@@ -218,6 +178,8 @@
                 title: "Chúc mừng bạn",
                 text: "Bạn đã chinh phục cô ấy thành công",
                 icon: "success",
+            }).then((value) => {
+                location.reload();
             });
             diem[0].innerHTML = 0;
             dem = 0;
