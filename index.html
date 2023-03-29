@@ -64,12 +64,26 @@
             "value": "Hẹn hò",
         }
     ];
-    swal("Write something here:", {
-        content: "input",
+    swal({
+        title: "Người bạn muốn chinh phục là:",
+        content: {
+            element: "input",
+            attributes: {
+                placeholder: "Nhập tên của cô ấy"
+            },
+        },
     })
         .then((value) => {
-            name[0].innerHTML = value
-            // swal(`You typed: ${value}`);
+            swal({
+                title: "Bạn đã chắc chắn chưa",
+                icon: "info",
+                buttons: {
+                    cancel: true,
+                    confirm: true,
+                },
+            }).then(() => {
+                name[0].innerHTML = value;
+            });
         });
     function plusSlides(n) {
         diChuyen(index += n);
