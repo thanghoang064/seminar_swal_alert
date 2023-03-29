@@ -24,14 +24,12 @@
             font-size: 50px;
             margin-left: 10px;
         }
-        .content, .btn{
+
+        .content,
+        .btn {
             display: flex;
             justify-content: center;
-            
-        }
 
-        .button {
-            text-align: center;
         }
 
         button {
@@ -40,13 +38,15 @@
             border-radius: 15px;
             margin-left: 20px;
         }
-        
     </style>
 </head>
 
 <body>
     <h1>Con Đường Đến Trái Tim Nàng <span></span></h1>
     <h2>0<span>%</span></h2>
+    <div class="btn">
+        <button onclick="nhapTen()">Nhập tên</button>
+    </div>
     <div class="content">
         <p>----</p>
         <p>----</p>
@@ -75,6 +75,8 @@
     let a = document.getElementsByTagName('p');
     let diem = document.getElementsByTagName('h2');
     let name = document.getElementsByTagName('span');
+    let button = document.getElementsByTagName('button');
+    button[0].style.display = 'none';
     let index = 0;
     let arrQuaTrinh = [
         {
@@ -98,38 +100,43 @@
             "value": "Hẹn hò",
         }
     ];
-    swal({
-        title: "Người bạn muốn chinh phục là:",
-        content: {
-            element: "input",
-            attributes: {
-                placeholder: "Nhập tên của cô ấy"
+    function nhapTen() {
+        swal({
+            title: "Người bạn muốn chinh phục là:",
+            content: {
+                element: "input",
+                attributes: {
+                    placeholder: "Nhập tên của cô ấy"
+                },
             },
-        },
-    })
-        .then((value) => {
-            if (value) {
-                swal({
-                    title: "Bạn đã chắc chắn chưa",
-                    icon: "info",
-                    buttons: true,
-                }).then((a) => {
-                    if (a == true) {
-                        name[0].innerHTML = value;
-                    } else {
-                        swal({
-                            title: "Chúc bạn sớm tìm được my destiny!",
-                            icon: "info",
-                        })
-                    }
-                });
-            } else {
-                swal({
-                    title: "Bạn cần phải nhập tên",
-                    icon: "error"
-                })
-            }
-        });
+        })
+            .then((value) => {
+                if (value) {
+                    swal({
+                        title: "Bạn đã chắc chắn chưa",
+                        icon: "info",
+                        buttons: true,
+                    }).then((a) => {
+                        if (a == true) {
+                            name[0].innerHTML = value;
+                            button[0].style.display = 'none';
+                        } else {
+                            swal({
+                                title: "Chúc bạn sớm tìm được my destiny!",
+                                icon: "info",
+                            })
+                        }
+                    });
+                } else {
+                    swal({
+                        title: "Bạn cần phải nhập tên",
+                        icon: "error"
+                    })
+                    button[0].style.display = 'block';
+                }
+            });
+    }
+    nhapTen();
     function plusSlides(n) {
         diChuyen(index += n);
     }
