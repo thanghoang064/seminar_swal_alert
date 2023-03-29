@@ -7,31 +7,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        body{
+            position: relative;
+            background-image: url('./tai_nguyen/AstonishingPinkBelugawhale-max-1mb.gif');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        h1,h3{
+            text-align: center;
+        }
         p {
             font-weight: bold;
-            font-size: 50px;
+            font-size: 50px; 
+            margin-left: 10px;
+        }
+        .content{
+            display: flex;
+            text-align: center;
+            justify-content: center;
+        }
+        button{
+            width: 100px;
+            height: 50px;
+            border-radius: 15px;
+
         }
     </style>
 </head>
 
 <body>
-    Quá trình chinh phục <span>.</span>
+   <h1>Con Đường Đến Trái Tim Nàng <span></span></h1> 
     <h3>0<span>%</span></h3>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
-    <p>-----</p>
+    <div class="content">
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+        <p>----</p>
+    </div>
     <button onclick="plusSlides(1)">tiến </button>
     <button onclick="plusSlides(-1)">lùi</button>
 
@@ -64,7 +87,7 @@
             "value": "Hẹn hò",
         }
     ];
-    swal("Write something here:", {
+    swal("Người bạn muốn chinh phục tên là:", {
         content: "input",
     })
         .then((value) => {
